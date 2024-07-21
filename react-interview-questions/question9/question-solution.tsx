@@ -1,4 +1,4 @@
-//  Question 9:  How can you optimize performance when using context in a React application?
+//  Question 9: How can you optimize performance when using context in a React application?
 
 // Solution:
 // Minimize the number of components that consume the context to avoid unnecessary re-renders.
