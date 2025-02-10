@@ -2511,19 +2511,28 @@ Absolutely! Here are **even more advanced techniques, tools, and methodologies**
 ---
 
 ### **59. Custom React Fiber Renderer**
+
 Create a custom React Fiber renderer to render React components to non-DOM targets (e.g., WebGL, Canvas, PDF).
 
 #### **Example**:
+
 1. Use **React Reconciler** to create a custom renderer:
    ```bash
    npm install react-reconciler
    ```
 2. Create a custom renderer:
+
    ```javascript
    import ReactReconciler from 'react-reconciler';
 
    const hostConfig = {
-     createInstance(type, props, rootContainerInstance, hostContext, internalInstanceHandle) {
+     createInstance(
+       type,
+       props,
+       rootContainerInstance,
+       hostContext,
+       internalInstanceHandle
+     ) {
        // Implement logic to create instances
      },
      appendInitialChild(parentInstance, child) {
@@ -2546,10 +2555,13 @@ Create a custom React Fiber renderer to render React components to non-DOM targe
 ---
 
 ### **60. Custom React Server Components**
+
 Create custom React Server Components to render components on the server and stream them to the client.
 
 #### **Example**:
+
 1. Use **React Server Components** in a custom server:
+
    ```javascript
    import { renderToPipeableStream } from 'react-dom/server';
    import App from './App';
@@ -2569,17 +2581,21 @@ Create custom React Server Components to render components on the server and str
 ---
 
 ### **61. Custom React Suspense Boundaries**
+
 Create custom Suspense boundaries to handle loading states and errors in a more granular way.
 
 #### **Example**:
+
 ```tsx
 import React, { Suspense } from 'react';
 
-const CustomSuspense = ({ fallback, children }: { fallback: React.ReactNode; children: React.ReactNode }) => (
-  <Suspense fallback={fallback}>
-    {children}
-  </Suspense>
-);
+const CustomSuspense = ({
+  fallback,
+  children,
+}: {
+  fallback: React.ReactNode;
+  children: React.ReactNode;
+}) => <Suspense fallback={fallback}>{children}</Suspense>;
 
 const App = () => (
   <CustomSuspense fallback={<div>Loading...</div>}>
@@ -2593,13 +2609,18 @@ export default App;
 ---
 
 ### **62. Custom React Context Providers**
+
 Create custom context providers to manage global state and side effects.
 
 #### **Example**:
+
 ```tsx
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const ThemeContext = createContext<{ theme: string; toggleTheme: () => void } | null>(null);
+const ThemeContext = createContext<{
+  theme: string;
+  toggleTheme: () => void;
+} | null>(null);
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState('light');
@@ -2633,13 +2654,18 @@ export default App;
 ---
 
 ### **63. Custom React Error Boundaries**
+
 Create custom error boundaries to handle errors in a more granular way.
 
 #### **Example**:
+
 ```tsx
 import React, { ErrorInfo } from 'react';
 
-class CustomErrorBoundary extends React.Component<{ fallback: React.ReactNode; children: React.ReactNode }, { hasError: boolean }> {
+class CustomErrorBoundary extends React.Component<
+  { fallback: React.ReactNode; children: React.ReactNode },
+  { hasError: boolean }
+> {
   constructor(props: { fallback: React.ReactNode; children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false };
@@ -2674,9 +2700,11 @@ export default App;
 ---
 
 ### **64. Custom React Hooks for Animation**
+
 Create custom hooks to manage animations in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useRef } from 'react';
 
@@ -2710,7 +2738,9 @@ const App = () => {
     setPosition((prev) => (prev + deltaTime * 0.01) % 100);
   });
 
-  return <div style={{ transform: `translateX(${position}px)` }}>Animated Box</div>;
+  return (
+    <div style={{ transform: `translateX(${position}px)` }}>Animated Box</div>
+  );
 };
 
 export default App;
@@ -2719,9 +2749,11 @@ export default App;
 ---
 
 ### **65. Custom React Hooks for Web Workers**
+
 Create custom hooks to manage Web Workers in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -2762,9 +2794,11 @@ export default App;
 ---
 
 ### **66. Custom React Hooks for WebSockets**
+
 Create custom hooks to manage WebSocket connections in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -2798,14 +2832,19 @@ export default App;
 ---
 
 ### **67. Custom React Hooks for Geolocation**
+
 Create custom hooks to manage geolocation in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
 const useGeolocation = () => {
-  const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -2843,6 +2882,7 @@ export default App;
 ---
 
 ### **Key Takeaways**
+
 1. **Custom Fiber Renderer**: Render to non-DOM targets.
 2. **Custom Server Components**: Render components on the server.
 3. **Custom Suspense Boundaries**: Handle loading states and errors.
@@ -2860,9 +2900,11 @@ Absolutely! Here are **even more advanced techniques, tools, and methodologies**
 ---
 
 ### **68. Custom React Hooks for Media Queries**
+
 Create custom hooks to manage media queries in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -2894,9 +2936,11 @@ export default App;
 ---
 
 ### **69. Custom React Hooks for Clipboard**
+
 Create custom hooks to manage clipboard operations in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useState } from 'react';
 
@@ -2918,7 +2962,9 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={() => copyToClipboard('Hello, World!')}>Copy to Clipboard</button>
+      <button onClick={() => copyToClipboard('Hello, World!')}>
+        Copy to Clipboard
+      </button>
       {copied && <span>Copied!</span>}
     </div>
   );
@@ -2930,9 +2976,11 @@ export default App;
 ---
 
 ### **70. Custom React Hooks for Local Storage**
+
 Create custom hooks to manage local storage in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useState } from 'react';
 
@@ -2963,7 +3011,11 @@ const App = () => {
 
   return (
     <div>
-      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder='Enter your name'
+      />
       <p>Hello, {name}!</p>
     </div>
   );
@@ -2975,9 +3027,11 @@ export default App;
 ---
 
 ### **71. Custom React Hooks for Session Storage**
+
 Create custom hooks to manage session storage in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useState } from 'react';
 
@@ -3008,7 +3062,11 @@ const App = () => {
 
   return (
     <div>
-      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder='Enter your name'
+      />
       <p>Hello, {name}!</p>
     </div>
   );
@@ -3020,9 +3078,11 @@ export default App;
 ---
 
 ### **72. Custom React Hooks for Fetching Data**
+
 Create custom hooks to manage data fetching in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -3065,9 +3125,11 @@ export default App;
 ---
 
 ### **73. Custom React Hooks for Debouncing**
+
 Create custom hooks to manage debouncing in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -3098,7 +3160,11 @@ const App = () => {
 
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type something..." />
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder='Type something...'
+      />
     </div>
   );
 };
@@ -3109,9 +3175,11 @@ export default App;
 ---
 
 ### **74. Custom React Hooks for Throttling**
+
 Create custom hooks to manage throttling in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -3146,7 +3214,11 @@ const App = () => {
 
   return (
     <div>
-      <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type something..." />
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder='Type something...'
+      />
     </div>
   );
 };
@@ -3157,9 +3229,11 @@ export default App;
 ---
 
 ### **75. Custom React Hooks for Intersection Observer**
+
 Create custom hooks to manage Intersection Observer in a reusable way.
 
 #### **Example**:
+
 ```tsx
 import { useEffect, useState, useRef } from 'react';
 
@@ -3192,7 +3266,13 @@ const App = () => {
   return (
     <div>
       <div style={{ height: '100vh' }}>Scroll down</div>
-      <div ref={ref as React.RefObject<HTMLDivElement>} style={{ height: '100vh', background: isIntersecting ? 'lightgreen' : 'lightcoral' }}>
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        style={{
+          height: '100vh',
+          background: isIntersecting ? 'lightgreen' : 'lightcoral',
+        }}
+      >
         {isIntersecting ? 'In view' : 'Not in view'}
       </div>
     </div>
@@ -3205,6 +3285,7 @@ export default App;
 ---
 
 ### **Key Takeaways**
+
 1. **Custom Hooks for Media Queries**: Manage media queries.
 2. **Custom Hooks for Clipboard**: Manage clipboard operations.
 3. **Custom Hooks for Local Storage**: Manage local storage.
@@ -3216,4 +3297,1277 @@ export default App;
 
 These advanced techniques and tools can help you build cutting-edge React applications with unique features and optimizations. 🚀
 
+Absolutely! Here are **even more advanced techniques, tools, and methodologies** to further enhance your React codebase. These ideas will help you push the boundaries of what you can achieve with React:
 
+---
+
+### **76. Custom React Hooks for Resize Observer**
+
+Create custom hooks to manage Resize Observer in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState, useRef } from 'react';
+
+const useResizeObserver = () => {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const ref = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      setDimensions({ width, height });
+    });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, dimensions];
+};
+
+const App = () => {
+  const [ref, dimensions] = useResizeObserver();
+
+  return (
+    <div>
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        style={{ border: '1px solid black', padding: '20px' }}
+      >
+        Resize me!
+      </div>
+      <p>
+        Width: {dimensions.width}, Height: {dimensions.height}
+      </p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **77. Custom React Hooks for Mutation Observer**
+
+Create custom hooks to manage Mutation Observer in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useRef } from 'react';
+
+const useMutationObserver = (
+  callback: MutationCallback,
+  options: MutationObserverInit
+) => {
+  const ref = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const observer = new MutationObserver(callback);
+
+    if (ref.current) {
+      observer.observe(ref.current, options);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.disconnect();
+      }
+    };
+  }, [callback, options]);
+
+  return ref;
+};
+
+const App = () => {
+  const handleMutation: MutationCallback = (mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        console.log('A child node has been added or removed.');
+      } else if (mutation.type === 'attributes') {
+        console.log(`The ${mutation.attributeName} attribute was modified.`);
+      }
+    }
+  };
+
+  const ref = useMutationObserver(handleMutation, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+  });
+
+  return (
+    <div ref={ref as React.RefObject<HTMLDivElement>}>
+      <button onClick={() => ref.current?.setAttribute('data-test', 'value')}>
+        Change Attribute
+      </button>
+      <button
+        onClick={() => {
+          const newElement = document.createElement('div');
+          newElement.textContent = 'New Child';
+          ref.current?.appendChild(newElement);
+        }}
+      >
+        Add Child
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **78. Custom React Hooks for Fullscreen API**
+
+Create custom hooks to manage Fullscreen API in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useFullscreen = () => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const enterFullscreen = () => {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen().then(() => setIsFullscreen(true));
+    }
+  };
+
+  const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().then(() => setIsFullscreen(false));
+    }
+  };
+
+  return { isFullscreen, enterFullscreen, exitFullscreen };
+};
+
+const App = () => {
+  const { isFullscreen, enterFullscreen, exitFullscreen } = useFullscreen();
+
+  return (
+    <div>
+      <button onClick={isFullscreen ? exitFullscreen : enterFullscreen}>
+        {isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **79. Custom React Hooks for Speech Synthesis**
+
+Create custom hooks to manage Speech Synthesis API in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useSpeechSynthesis = () => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const speak = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    speechSynthesis.speak(utterance);
+  };
+
+  const stop = () => {
+    speechSynthesis.cancel();
+    setIsSpeaking(false);
+  };
+
+  return { isSpeaking, speak, stop };
+};
+
+const App = () => {
+  const { isSpeaking, speak, stop } = useSpeechSynthesis();
+
+  return (
+    <div>
+      <button onClick={() => speak('Hello, World!')}>Speak</button>
+      <button onClick={stop} disabled={!isSpeaking}>
+        Stop
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **80. Custom React Hooks for Speech Recognition**
+
+Create custom hooks to manage Speech Recognition API in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+const useSpeechRecognition = () => {
+  const [transcript, setTranscript] = useState('');
+  const [isListening, setIsListening] = useState(false);
+
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      const transcript = Array.from(event.results)
+        .map((result) => result[0].transcript)
+        .join('');
+      setTranscript(transcript);
+    };
+
+    return () => {
+      recognition.stop();
+    };
+  }, []);
+
+  const startListening = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.start();
+  };
+
+  const stopListening = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.stop();
+  };
+
+  return { transcript, isListening, startListening, stopListening };
+};
+
+const App = () => {
+  const { transcript, isListening, startListening, stopListening } =
+    useSpeechRecognition();
+
+  return (
+    <div>
+      <button onClick={isListening ? stopListening : startListening}>
+        {isListening ? 'Stop Listening' : 'Start Listening'}
+      </button>
+      <p>{transcript}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **81. Custom React Hooks for Geolocation Watch**
+
+Create custom hooks to watch geolocation changes in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useGeolocationWatch = () => {
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      const watchId = navigator.geolocation.watchPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+
+      return () => {
+        navigator.geolocation.clearWatch(watchId);
+      };
+    } else {
+      setError('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
+  return { location, error };
+};
+
+const App = () => {
+  const { location, error } = useGeolocationWatch();
+
+  return (
+    <div>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : location ? (
+        <p>
+          Latitude: {location.latitude}, Longitude: {location.longitude}
+        </p>
+      ) : (
+        <p>Loading location...</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **82. Custom React Hooks for Battery Status**
+
+Create custom hooks to monitor battery status in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useBatteryStatus = () => {
+  const [batteryLevel, setBatteryLevel] = useState<number | null>(null);
+  const [charging, setCharging] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const getBatteryStatus = async () => {
+      const battery = await navigator.getBattery();
+      setBatteryLevel(battery.level);
+      setCharging(battery.charging);
+
+      battery.addEventListener('levelchange', () => {
+        setBatteryLevel(battery.level);
+      });
+
+      battery.addEventListener('chargingchange', () => {
+        setCharging(battery.charging);
+      });
+    };
+
+    getBatteryStatus();
+  }, []);
+
+  return { batteryLevel, charging };
+};
+
+const App = () => {
+  const { batteryLevel, charging } = useBatteryStatus();
+
+  return (
+    <div>
+      <p>
+        Battery Level:{' '}
+        {batteryLevel !== null ? `${batteryLevel * 100}%` : 'Loading...'}
+      </p>
+      <p>
+        Charging: {charging !== null ? (charging ? 'Yes' : 'No') : 'Loading...'}
+      </p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **Key Takeaways**
+
+1. **Custom Hooks for Resize Observer**: Manage element resizing.
+2. **Custom Hooks for Mutation Observer**: Monitor DOM changes.
+3. **Custom Hooks for Fullscreen API**: Manage fullscreen mode.
+4. **Custom Hooks for Speech Synthesis**: Enable text-to-speech.
+5. **Custom Hooks for Speech Recognition**: Enable speech-to-text.
+6. **Custom Hooks for Geolocation Watch**: Monitor geolocation changes.
+7. **Custom Hooks for Battery Status**: Monitor battery status.
+
+These advanced techniques and tools can help you build cutting-edge React applications with unique features and optimizations. 🚀
+
+Absolutely! Here are **even more advanced techniques, tools, and methodologies** to further enhance your React codebase. These ideas will help you push the boundaries of what you can achieve with React:
+
+---
+
+### **83. Custom React Hooks for Network Status**
+
+Create custom hooks to monitor network status in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useNetworkStatus = () => {
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  return isOnline;
+};
+
+const App = () => {
+  const isOnline = useNetworkStatus();
+
+  return <div>{isOnline ? 'Online' : 'Offline'}</div>;
+};
+
+export default App;
+```
+
+---
+
+### **84. Custom React Hooks for Page Visibility**
+
+Create custom hooks to monitor page visibility in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const usePageVisibility = () => {
+  const [isVisible, setIsVisible] = useState(!document.hidden);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  return isVisible;
+};
+
+const App = () => {
+  const isVisible = usePageVisibility();
+
+  return <div>{isVisible ? 'Page is visible' : 'Page is hidden'}</div>;
+};
+
+export default App;
+```
+
+---
+
+### **85. Custom React Hooks for Online/Offline Events**
+
+Create custom hooks to handle online/offline events in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useOnlineStatus = () => {
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  return isOnline;
+};
+
+const App = () => {
+  const isOnline = useOnlineStatus();
+
+  return <div>{isOnline ? 'Online' : 'Offline'}</div>;
+};
+
+export default App;
+```
+
+---
+
+### **86. Custom React Hooks for Device Orientation**
+
+Create custom hooks to monitor device orientation in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useDeviceOrientation = () => {
+  const [orientation, setOrientation] = useState<{
+    alpha: number | null;
+    beta: number | null;
+    gamma: number | null;
+  }>({
+    alpha: null,
+    beta: null,
+    gamma: null,
+  });
+
+  useEffect(() => {
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      setOrientation({
+        alpha: event.alpha,
+        beta: event.beta,
+        gamma: event.gamma,
+      });
+    };
+
+    window.addEventListener('deviceorientation', handleOrientation);
+
+    return () => {
+      window.removeEventListener('deviceorientation', handleOrientation);
+    };
+  }, []);
+
+  return orientation;
+};
+
+const App = () => {
+  const { alpha, beta, gamma } = useDeviceOrientation();
+
+  return (
+    <div>
+      <p>Alpha: {alpha}</p>
+      <p>Beta: {beta}</p>
+      <p>Gamma: {gamma}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **87. Custom React Hooks for Device Motion**
+
+Create custom hooks to monitor device motion in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useDeviceMotion = () => {
+  const [motion, setMotion] = useState<{
+    acceleration: DeviceMotionEvent['acceleration'];
+    rotationRate: DeviceMotionEvent['rotationRate'];
+  }>({
+    acceleration: null,
+    rotationRate: null,
+  });
+
+  useEffect(() => {
+    const handleMotion = (event: DeviceMotionEvent) => {
+      setMotion({
+        acceleration: event.acceleration,
+        rotationRate: event.rotationRate,
+      });
+    };
+
+    window.addEventListener('devicemotion', handleMotion);
+
+    return () => {
+      window.removeEventListener('devicemotion', handleMotion);
+    };
+  }, []);
+
+  return motion;
+};
+
+const App = () => {
+  const { acceleration, rotationRate } = useDeviceMotion();
+
+  return (
+    <div>
+      <p>Acceleration: {JSON.stringify(acceleration)}</p>
+      <p>Rotation Rate: {JSON.stringify(rotationRate)}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **88. Custom React Hooks for Vibration API**
+
+Create custom hooks to manage device vibration in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect } from 'react';
+
+const useVibration = (pattern: number | number[]) => {
+  useEffect(() => {
+    if (navigator.vibrate) {
+      navigator.vibrate(pattern);
+    }
+
+    return () => {
+      if (navigator.vibrate) {
+        navigator.vibrate(0); // Stop vibration
+      }
+    };
+  }, [pattern]);
+};
+
+const App = () => {
+  useVibration([200, 100, 200]);
+
+  return <div>Vibrating...</div>;
+};
+
+export default App;
+```
+
+---
+
+### **89. Custom React Hooks for Screen Wake Lock**
+
+Create custom hooks to manage screen wake lock in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useState } from 'react';
+
+const useScreenWakeLock = () => {
+  const [isWakeLocked, setIsWakeLocked] = useState(false);
+
+  useEffect(() => {
+    let wakeLock: WakeLockSentinel | null = null;
+
+    const requestWakeLock = async () => {
+      try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        setIsWakeLocked(true);
+      } catch (error) {
+        console.error('Failed to acquire wake lock:', error);
+      }
+    };
+
+    requestWakeLock();
+
+    return () => {
+      if (wakeLock) {
+        wakeLock.release().then(() => setIsWakeLocked(false));
+      }
+    };
+  }, []);
+
+  return isWakeLocked;
+};
+
+const App = () => {
+  const isWakeLocked = useScreenWakeLock();
+
+  return (
+    <div>
+      {isWakeLocked
+        ? 'Screen wake lock is active'
+        : 'Screen wake lock is not active'}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **90. Custom React Hooks for Clipboard Read/Write**
+
+Create custom hooks to manage clipboard read/write operations in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useClipboard = () => {
+  const [clipboardText, setClipboardText] = useState('');
+
+  const readClipboard = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setClipboardText(text);
+    } catch (error) {
+      console.error('Failed to read clipboard:', error);
+    }
+  };
+
+  const writeClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setClipboardText(text);
+    } catch (error) {
+      console.error('Failed to write to clipboard:', error);
+    }
+  };
+
+  return { clipboardText, readClipboard, writeClipboard };
+};
+
+const App = () => {
+  const { clipboardText, readClipboard, writeClipboard } = useClipboard();
+
+  return (
+    <div>
+      <button onClick={readClipboard}>Read Clipboard</button>
+      <button onClick={() => writeClipboard('Hello, World!')}>
+        Write to Clipboard
+      </button>
+      <p>Clipboard Text: {clipboardText}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **Key Takeaways**
+
+1. **Custom Hooks for Network Status**: Monitor network connectivity.
+2. **Custom Hooks for Page Visibility**: Monitor page visibility.
+3. **Custom Hooks for Online/Offline Events**: Handle online/offline events.
+4. **Custom Hooks for Device Orientation**: Monitor device orientation.
+5. **Custom Hooks for Device Motion**: Monitor device motion.
+6. **Custom Hooks for Vibration API**: Manage device vibration.
+7. **Custom Hooks for Screen Wake Lock**: Manage screen wake lock.
+8. **Custom Hooks for Clipboard Read/Write**: Manage clipboard operations.
+
+These advanced techniques and tools can help you build cutting-edge React applications with unique features and optimizations. 🚀
+
+Absolutely! Here are **even more advanced techniques, tools, and methodologies** to further enhance your React codebase. These ideas will help you push the boundaries of what you can achieve with React:
+
+---
+
+### **91. Custom React Hooks for Web Bluetooth API**
+
+Create custom hooks to interact with Bluetooth devices in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useBluetooth = () => {
+  const [device, setDevice] = useState<BluetoothDevice | null>(null);
+
+  const connectToDevice = async () => {
+    try {
+      const device = await navigator.bluetooth.requestDevice({
+        acceptAllDevices: true,
+      });
+      setDevice(device);
+    } catch (error) {
+      console.error('Failed to connect to Bluetooth device:', error);
+    }
+  };
+
+  return { device, connectToDevice };
+};
+
+const App = () => {
+  const { device, connectToDevice } = useBluetooth();
+
+  return (
+    <div>
+      <button onClick={connectToDevice}>Connect to Bluetooth Device</button>
+      {device && <p>Connected to: {device.name}</p>}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **92. Custom React Hooks for Web USB API**
+
+Create custom hooks to interact with USB devices in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useUSB = () => {
+  const [device, setDevice] = useState<USBDevice | null>(null);
+
+  const connectToDevice = async () => {
+    try {
+      const device = await navigator.usb.requestDevice({ filters: [] });
+      setDevice(device);
+    } catch (error) {
+      console.error('Failed to connect to USB device:', error);
+    }
+  };
+
+  return { device, connectToDevice };
+};
+
+const App = () => {
+  const { device, connectToDevice } = useUSB();
+
+  return (
+    <div>
+      <button onClick={connectToDevice}>Connect to USB Device</button>
+      {device && <p>Connected to: {device.productName}</p>}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **93. Custom React Hooks for Web NFC API**
+
+Create custom hooks to interact with NFC devices in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useNFC = () => {
+  const [nfcMessage, setNfcMessage] = useState<string | null>(null);
+
+  const readNFC = async () => {
+    try {
+      const reader = new NDEFReader();
+      await reader.scan();
+      reader.onreading = (event) => {
+        const message = event.message.records[0].data;
+        setNfcMessage(new TextDecoder().decode(message));
+      };
+    } catch (error) {
+      console.error('Failed to read NFC:', error);
+    }
+  };
+
+  return { nfcMessage, readNFC };
+};
+
+const App = () => {
+  const { nfcMessage, readNFC } = useNFC();
+
+  return (
+    <div>
+      <button onClick={readNFC}>Read NFC</button>
+      {nfcMessage && <p>NFC Message: {nfcMessage}</p>}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **94. Custom React Hooks for Web Share API**
+
+Create custom hooks to share content using the Web Share API in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const useWebShare = () => {
+  const [isSupported, setIsSupported] = useState('share' in navigator);
+
+  const share = async (title: string, text: string, url: string) => {
+    try {
+      await navigator.share({ title, text, url });
+    } catch (error) {
+      console.error('Failed to share:', error);
+    }
+  };
+
+  return { isSupported, share };
+};
+
+const App = () => {
+  const { isSupported, share } = useWebShare();
+
+  return (
+    <div>
+      {isSupported ? (
+        <button
+          onClick={() =>
+            share(
+              'My App',
+              'Check out this awesome app!',
+              'https://example.com'
+            )
+          }
+        >
+          Share
+        </button>
+      ) : (
+        <p>Web Share API is not supported in this browser.</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **95. Custom React Hooks for Web Push Notifications**
+
+Create custom hooks to manage web push notifications in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState } from 'react';
+
+const usePushNotifications = () => {
+  const [permission, setPermission] = useState(Notification.permission);
+
+  const requestPermission = async () => {
+    try {
+      const result = await Notification.requestPermission();
+      setPermission(result);
+    } catch (error) {
+      console.error('Failed to request notification permission:', error);
+    }
+  };
+
+  const showNotification = (title: string, options?: NotificationOptions) => {
+    if (permission === 'granted') {
+      new Notification(title, options);
+    }
+  };
+
+  return { permission, requestPermission, showNotification };
+};
+
+const App = () => {
+  const { permission, requestPermission, showNotification } =
+    usePushNotifications();
+
+  return (
+    <div>
+      <button onClick={requestPermission}>
+        Request Notification Permission
+      </button>
+      <button onClick={() => showNotification('Hello, World!')}>
+        Show Notification
+      </button>
+      <p>Notification Permission: {permission}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **96. Custom React Hooks for Web Audio API**
+
+Create custom hooks to manage audio playback and manipulation in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+const useAudio = (url: string) => {
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+
+  const togglePlay = () => setPlaying(!playing);
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [playing, audio]);
+
+  useEffect(() => {
+    audio.addEventListener('ended', () => setPlaying(false));
+    return () => {
+      audio.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, [audio]);
+
+  return { playing, togglePlay };
+};
+
+const App = () => {
+  const { playing, togglePlay } = useAudio('https://example.com/audio.mp3');
+
+  return (
+    <div>
+      <button onClick={togglePlay}>{playing ? 'Pause' : 'Play'}</button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **97. Custom React Hooks for Web MIDI API**
+
+Create custom hooks to interact with MIDI devices in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+const useMIDI = () => {
+  const [midiAccess, setMidiAccess] = useState<WebMidi.MIDIAccess | null>(null);
+
+  useEffect(() => {
+    const requestMIDIAccess = async () => {
+      try {
+        const access = await navigator.requestMIDIAccess();
+        setMidiAccess(access);
+      } catch (error) {
+        console.error('Failed to access MIDI devices:', error);
+      }
+    };
+
+    requestMIDIAccess();
+  }, []);
+
+  return { midiAccess };
+};
+
+const App = () => {
+  const { midiAccess } = useMIDI();
+
+  return (
+    <div>
+      {midiAccess ? (
+        <p>MIDI Access Granted</p>
+      ) : (
+        <p>MIDI Access Not Available</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **98. Custom React Hooks for WebXR API**
+
+Create custom hooks to manage WebXR experiences in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+const useWebXR = () => {
+  const [xrSession, setXrSession] = useState<XRSession | null>(null);
+
+  const requestXRSession = async () => {
+    try {
+      const session = await navigator.xr.requestSession('immersive-vr');
+      setXrSession(session);
+    } catch (error) {
+      console.error('Failed to request XR session:', error);
+    }
+  };
+
+  return { xrSession, requestXRSession };
+};
+
+const App = () => {
+  const { xrSession, requestXRSession } = useWebXR();
+
+  return (
+    <div>
+      <button onClick={requestXRSession}>Start XR Session</button>
+      {xrSession && <p>XR Session Started</p>}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **99. Custom React Hooks for WebAssembly**
+
+Create custom hooks to interact with WebAssembly modules in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+const useWebAssembly = (url: string) => {
+  const [module, setModule] = useState<WebAssembly.Module | null>(null);
+
+  useEffect(() => {
+    const loadWasm = async () => {
+      try {
+        const response = await fetch(url);
+        const buffer = await response.arrayBuffer();
+        const module = await WebAssembly.compile(buffer);
+        setModule(module);
+      } catch (error) {
+        console.error('Failed to load WebAssembly module:', error);
+      }
+    };
+
+    loadWasm();
+  }, [url]);
+
+  return { module };
+};
+
+const App = () => {
+  const { module } = useWebAssembly('path/to/module.wasm');
+
+  return (
+    <div>
+      {module ? (
+        <p>WebAssembly Module Loaded</p>
+      ) : (
+        <p>Loading WebAssembly Module...</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **100. Custom React Hooks for WebGL**
+
+Create custom hooks to manage WebGL contexts in a reusable way.
+
+#### **Example**:
+
+```tsx
+import { useEffect, useRef } from 'react';
+
+const useWebGL = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
+  const [gl, setGl] = useState<WebGLRenderingContext | null>(null);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const context = canvasRef.current.getContext('webgl');
+      setGl(context);
+    }
+  }, [canvasRef]);
+
+  return { gl };
+};
+
+const App = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { gl } = useWebGL(canvasRef);
+
+  return (
+    <div>
+      <canvas ref={canvasRef} width='800' height='600' />
+      {gl ? (
+        <p>WebGL Context Initialized</p>
+      ) : (
+        <p>WebGL Context Not Available</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+### **Key Takeaways**
+
+1. **Custom Hooks for Web Bluetooth API**: Interact with Bluetooth devices.
+2. **Custom Hooks for Web USB API**: Interact with USB devices.
+3. **Custom Hooks for Web NFC API**: Interact with NFC devices.
+4. **Custom Hooks for Web Share API**: Share content.
+5. **Custom Hooks for Web Push Notifications**: Manage push notifications.
+6. **Custom Hooks for Web Audio API**: Manage audio playback.
+7. **Custom Hooks for Web MIDI API**: Interact with MIDI devices.
+8. **Custom Hooks for WebXR API**: Manage WebXR experiences.
+9. **Custom Hooks for WebAssembly**: Interact with WebAssembly modules.
+10. **Custom Hooks for WebGL**: Manage WebGL contexts.
+
+These advanced techniques and tools can help you build cutting-edge React applications with unique features and optimizations. 🚀
